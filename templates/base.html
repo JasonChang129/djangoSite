@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+        .page-header{
+            height: 50px;
+            background-color: rebeccapurple;
+        }
+        .page-body .menu{
+            height: 500px;
+            background-color:antiquewhite;
+            float: left;
+            width: 20%;
+        }
+        .page-body .content{
+            height: 500px;
+            background-coplor: cornflowerblue;
+            float: right;
+            width: 80%;
+        }
+        .page-footer{
+            height: 50px;
+            background-color: darkcyan;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="page-header"></div>
+    <div class="page-body">
+        <div class="menu">
+            <a href="/blog/ordered/">菜单</a>
+            <br>
+            <a href="/blog/shopping_car/">购物车</a>
+        </div>
+        {% block content %}
+        {% endblock%}
+    </div>
+    <div class="page-footer"></div>
+</div>
+</body>
+</html>

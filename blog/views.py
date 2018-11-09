@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponse
 import datetime
 from blog import models
@@ -36,3 +36,19 @@ def year_2003_12(reqest,name):
 def current_year(reqest,year,month):
     print('======================')
     return HttpResponse('当前时间：'+year+month)
+
+def index(req):
+    if req.method == 'POST':
+        if 1:
+            return redirect('/home/')
+    return render(req,'login.html',{'num':3})
+
+def login(req):
+    p = '小王'
+    return render(req,'home.html',{'name':p})
+
+def ordered(req):
+    return render(req,'ordered.html')
+
+def shopping_car(req):
+    return render(req,'shopping_car.html')

@@ -12,4 +12,8 @@ urlpatterns = [
     #带参数
     path(r'^articles/2013/', views.year_2003_12,{'name':'的饭是大连贵金属'}),
     re_path(r'articles/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/$', views.current_year),
+    path(r'index/',views.index),
+    path(r'login/',views.login),
+    path(r'ordered/',views.ordered),
+    path(r'shopping_car/',views.shopping_car),
 ]
