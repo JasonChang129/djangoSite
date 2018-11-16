@@ -124,3 +124,20 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'image'),
     os.path.join(BASE_DIR,'templatetags'),
 )
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': DEBUG,
+            'propagate': True,
+        },
+    },
+}

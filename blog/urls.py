@@ -16,4 +16,5 @@ urlpatterns = [
     path(r'login/',views.login),
     path(r'ordered/',views.ordered),
     path(r'shopping_car/',views.shopping_car),
+    path(r'data_oper/',views.data_oper),
 ]

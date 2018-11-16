@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponse
 import datetime
 from blog import models
+# from blog.models import Book
+from blog.models import Publish
 
 
 # Create your views here.
@@ -52,3 +54,11 @@ def ordered(req):
 
 def shopping_car(req):
     return render(req,'shopping_car.html')
+
+def data_oper(req):
+    #添加对象
+    obj = Publish.objects.filter(id=1)
+    # print(obj.city)
+    print(obj.name)
+
+    return HttpResponse('OK')
