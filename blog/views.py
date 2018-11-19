@@ -4,6 +4,7 @@ import datetime
 from blog import models
 # from blog.models import Book
 from blog.models import Publish
+from blog.models import Book
 
 
 # Create your views here.
@@ -56,9 +57,15 @@ def shopping_car(req):
     return render(req,'shopping_car.html')
 
 def data_oper(req):
-    #添加对象
-    obj = Publish.objects.filter(id=1)
-    # print(obj.city)
-    print(obj.name)
+    # obj = Publish.objects.filter(id=1)
+    # print(obj[0].name)
+
+    #基于对象的正向查询从book中查询出版商的city
+    # publisher = models.Book.objects.filter(title='Go')[0].publisher
+    # print(publisher.city)
+
+    #基于对象的反向查询，从出版商中查询书籍
+    obj = models.Publish.objects.filter(name='中信出版社')[0]
+    print(obj.book_set.all().values('title').distinct())
 
     return HttpResponse('OK')
