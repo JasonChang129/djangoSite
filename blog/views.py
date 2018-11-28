@@ -2,9 +2,10 @@ from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponse
 import datetime
 from blog import models
-# from blog.models import Book
 from blog.models import Publish
 from blog.models import Book
+from django.db.models import Avg,Min,Sum,Max
+from django.db.models import F,Q
 
 
 # Create your views here.
@@ -79,6 +80,17 @@ def data_oper(req):
     #关联表查询
     # obj = models.Publish.objects.filter(book__title='鲁滨逊').values('name')
     # obj = models.Book.objects.filter(publisher__name='中信出版社').values('title')
-    obj = models.Book.objects.filter(title='鲁滨逊').values('publisher__name')
+    # obj = models.Book.objects.filter(title='鲁滨逊').values('publisher__name')
+
+    #聚合查询和分组查询
+    #聚合查询
+    # obj = models.Book.objects.aggregate(Sum('price'),Max('price'),Min('price'))
+    #分组查询
+    # obj = models.Book.objects.values('publisher__name').annotate(Sum('price'))
+
+    #F查询和Q查询
+    # obj = models.Book.objects.all().update(price = F('price')+20)
+    # Q查询
+    obj = models.Book.objects.filter(Q(price__gt=30)&(Q(page_num=100)|Q(title='python')),color='red')
     print(obj)
     return HttpResponse('OK')
