@@ -1,0 +1,6 @@
+*.pyc
+*.out
+.noseids
+__pycache__
+.idea/
+

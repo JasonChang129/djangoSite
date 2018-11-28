@@ -65,7 +65,20 @@ def data_oper(req):
     # print(publisher.city)
 
     #基于对象的反向查询，从出版商中查询书籍
-    obj = models.Publish.objects.filter(name='中信出版社')[0]
-    print(obj.book_set.all().values('title').distinct())
+    # obj = models.Publish.objects.filter(name='中信出版社')[0]
+    # print(obj.book_set.all().values('title').distinct())
 
+    #双下划线的用法(__)
+    #单表查询
+    # obj = models.Book.objects.filter(id__gt=0).values('title')
+    # obj = models.Book.objects.filter(id__lt=2).values('title')
+    # obj = models.Book.objects.filter(id__in=[1,3]).values('title')
+    # obj = models.Book.objects.filter(title__icontains='g').values('title')
+    # obj = models.Book.objects.filter(title__startswith='g').values('title')
+
+    #关联表查询
+    # obj = models.Publish.objects.filter(book__title='鲁滨逊').values('name')
+    # obj = models.Book.objects.filter(publisher__name='中信出版社').values('title')
+    obj = models.Book.objects.filter(title='鲁滨逊').values('publisher__name')
+    print(obj)
     return HttpResponse('OK')
