@@ -3,11 +3,11 @@ from django.db import models
 # Create your models here.
 
 class Book(models.Model):
-    title = models.CharField(max_length=64)
-    price = models.IntegerField()
-    color = models.CharField(max_length=64)
+    title = models.CharField(max_length=64,verbose_name='书名')
+    price = models.IntegerField(verbose_name='价格')
+    color = models.CharField(max_length=64,verbose_name='颜色')
     page_num = models.IntegerField(null=True)
-    publisher = models.ForeignKey('Publish',on_delete=models.CASCADE) #一对多关系
+    publisher = models.ForeignKey('Publish',on_delete=models.CASCADE,verbose_name='出版商') #一对多关系
 #
 #     #接受对象
 #     author = models.ManyToManyField('Author')
