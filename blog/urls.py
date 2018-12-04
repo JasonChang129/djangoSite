@@ -17,4 +17,7 @@ urlpatterns = [
     path(r'ordered/',views.ordered),
     path(r'shopping_car/',views.shopping_car),
     path(r'data_oper/',views.data_oper),
+    #ajax练习
+    path(r'ajax_index/',views.ajax_index),
+    path(r'ajax_receive/',views.ajax_receive),
 ]

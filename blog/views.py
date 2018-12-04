@@ -94,3 +94,16 @@ def data_oper(req):
     obj = models.Book.objects.filter(Q(price__gt=30)&(Q(page_num=100)|Q(title='python')),color='red')
     print(obj)
     return HttpResponse('OK')
+
+
+def ajax_index(req):
+    return render(req,'ajax_index.html')
+
+def ajax_receive(req):
+    if req.method == 'POST':
+        username = req.POST.get("username")
+        if username == 'jason':
+            return HttpResponse('1')
+        else:
+            return HttpResponse('0')
+    return HttpResponse("ajax_get_ok")
